@@ -110,7 +110,7 @@ luci-app-at-webserver
 # 风扇控制
 fancontrol
 luci-app-fancontrol
-luci-i18n-fancontrol-zh-cn
+# luci-i18n-fancontrol-zh-cn
 
 # smartdns
 smartdns
