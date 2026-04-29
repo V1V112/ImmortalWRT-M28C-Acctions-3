@@ -1,7 +1,7 @@
 log:
   level: error    # 日志级别。可选 "debug" "info" "warn" "error"。默认 "info"。
   # 日志文件路径。默认 "mosdns.log"（当前目录）。如果不需要日志文件可设置为 ""。
-  file: log/mosdns.log
+  file: mosdns.log
 
 include:
   ## NFT 规则添加 ##
