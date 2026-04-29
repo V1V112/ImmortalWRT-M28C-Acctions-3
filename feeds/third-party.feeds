@@ -3,3 +3,4 @@
 
 src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main
 src-git qmodem https://github.com/FUjr/QModem.git;main
+src-git fancontrol https://github.com/rockjake/luci-app-fancontrol.git;main
