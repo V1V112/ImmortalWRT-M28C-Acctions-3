@@ -61,7 +61,11 @@ clone_package_source() {
   local src
 
   log "Cloning package source: $name ($ref)"
-  git clone --depth 1 --filter=blob:none --branch "$ref" "$repo" "$clone_dir"
+  if ! git clone --depth 1 --filter=blob:none --branch "$ref" "$repo" "$clone_dir"; then
+    warn "Filtered clone failed for $name; retrying without blob filter"
+    rm -rf "$clone_dir"
+    git clone --depth 1 --branch "$ref" "$repo" "$clone_dir"
+  fi
 
   if [ "$subdir" = "." ]; then
     src="$clone_dir"
