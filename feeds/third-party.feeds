@@ -1,0 +1,5 @@
+# 在执行 ./scripts/feeds update 之前添加的第三方 feeds 源。
+# scripts/add-feeds.sh 会跳过重复的 feed 名称或重复的仓库 URL。
+
+src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main
+src-git qmodem https://github.com/FUjr/QModem.git;main

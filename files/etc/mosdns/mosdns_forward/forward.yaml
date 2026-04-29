@@ -1,0 +1,33 @@
+plugins:
+## SmartDNS 组 ##
+  - tag: smartdns_direct
+    type: forward
+    args:
+      concurrent: 1
+      upstreams:
+        - addr: 127.0.0.1:531
+#        - addr: 223.5.5.5:53
+
+  - tag: smartdns_proxy
+    type: forward
+    args:
+      concurrent: 1
+      upstreams:
+        - addr: 127.0.0.1:532
+#        - addr: 1.1.1.1:853
+
+## Clash FakeIP 组 ##
+  - tag: fakeip
+    type: forward
+    args:
+      concurrent: 1
+      upstreams:
+        - addr: 127.0.0.1:5300
+
+  - tag: fakeip_fallback
+    type: fallback
+    args:
+      primary: fakeip
+      secondary: smartdns_proxy
+      threshold: 10
+      always_standby: false

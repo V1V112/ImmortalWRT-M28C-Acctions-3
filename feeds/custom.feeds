@@ -1,0 +1,6 @@
+# 在这里填写你自己的 feed 源，每行一个。
+# 示例：
+# src-git myfeed https://github.com/example/openwrt-packages.git;main
+#
+# 你也可以把临时 feed 源粘贴到 GitHub Actions 的 “extra_feeds” 输入框中。
+# scripts/add-feeds.sh 会根据 feed 名称和仓库 URL 跳过重复项。
