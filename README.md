@@ -69,8 +69,7 @@
 
 - M28C 上游 DTS 已声明 `pwm-fan`。
 - 固件内置 `kmod-hwmon-pwmfan`。
-- 仓库通过 `local-packages/` 内置 `fancontrol` 和 `luci-app-fancontrol`。
-- 刷入后可通过 LuCI 风扇控制页面或 UCI 配置管理风扇策略。
+- 仓库通过 Rockchip DTS 补丁固定默认 PWM 风扇曲线，由内核 thermal 框架自动调速。
 
 ### eBPF / BTF 能力
 
@@ -134,7 +133,8 @@ immortalwrt-<run_number>-m28c-<ref>
 |   |-- usr/bin/
 |   `-- www/
 |-- local-packages/                # 本地 OpenWrt 软件包源码
-|-- patches/kernel/generic/        # 追加到上游源码的内核补丁
+|-- patches/kernel/generic/        # 追加到上游源码的通用内核补丁
+|-- patches/kernel/rockchip/       # 追加到 Rockchip 平台的内核补丁
 |-- profiles/m28c/                 # M28C 构建 profile
 |   |-- packages.txt               # 默认内置软件包列表
 |   `-- target.config              # 目标平台和固件格式配置
@@ -198,7 +198,7 @@ files/www/luci-static/x   ->  /www/luci-static/x
 
 当前包含：
 
-- `luci-app-fancontrol-main/`：风扇控制程序和 LuCI 页面。
+- `luci-app-fancontrol-main/`：风扇控制程序和 LuCI 页面源码，当前默认不编入固件。
 - `mt5700webui-openwrt-server-main/`：MT5700 AT WebServer 和对应 LuCI / WebUI 资源。
 
 支持的目录结构：
@@ -215,9 +215,10 @@ local-packages/<collection>/<package-name>/Makefile
 保存构建时追加到 ImmortalWrt 源码树的补丁。
 
 - `patches/kernel/generic/`：通用内核补丁目录。
+- `patches/kernel/rockchip/`：Rockchip 平台内核补丁目录。
 - 当前补丁：`999-usb-serial-option-add-mt5700-3466-3301.patch`，用于补充 MT5700 USB 串口识别。
 
-`scripts/stage-kernel-patches.sh` 会自动检测 rockchip 目标使用的 `KERNEL_PATCHVER`，并把补丁复制到 `target/linux/generic/hack-<kernel-version>/`。如果版本目录不存在，则回退到 `target/linux/generic/hack/`。
+`scripts/stage-kernel-patches.sh` 会自动检测 rockchip 目标使用的 `KERNEL_PATCHVER`，并把通用补丁复制到 `target/linux/generic/hack-<kernel-version>/`，把 Rockchip 平台补丁复制到 `target/linux/rockchip/patches-<kernel-version>/`。通用补丁目录不存在时会回退到 `target/linux/generic/hack/`。
 
 ### `profiles/`
 
@@ -233,7 +234,7 @@ local-packages/<collection>/<package-name>/Makefile
 - `common.sh`：公共函数，如日志、错误退出、路径检测。
 - `add-feeds.sh`：合并 `feeds/*.feeds` 和 workflow 的 `extra_feeds`，并跳过重复 feed。
 - `prepare-packages.sh`：克隆 `package-sources.conf` 中的单包源码，复制 `local-packages/` 中的本地包，并移除上游冲突包。
-- `stage-kernel-patches.sh`：把 `patches/kernel/generic/*.patch` 放入 ImmortalWrt 内核补丁目录。
+- `stage-kernel-patches.sh`：把 `patches/kernel/generic/*.patch` 和 `patches/kernel/rockchip/*.patch` 放入 ImmortalWrt 内核补丁目录。
 - `stage-overlay.sh`：把 `files/` 注入 ImmortalWrt 的 rootfs overlay，并特殊处理 `files/usr/bin/`。
 - `generate-config.sh`：合并 `target.config`、`packages.txt`、`configs/custom.config`、`extra_packages` 和 `extra_config`，生成最终 `.config`。
 
@@ -353,7 +354,8 @@ make -j"$(nproc)"
 - 覆盖系统配置文件：放入 `files/etc/`。
 - 添加可执行文件：放入 `files/usr/bin/`。
 - 添加 Web 静态资源：放入 `files/www/`。
-- 添加内核补丁：放入 `patches/kernel/generic/`。
+- 添加通用内核补丁：放入 `patches/kernel/generic/`。
+- 添加 Rockchip 平台内核补丁：放入 `patches/kernel/rockchip/`。
 - 追加原始 Kconfig：编辑 `configs/custom.config`。
 
 ## 参考项目
