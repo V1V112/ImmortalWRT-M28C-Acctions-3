@@ -10,43 +10,43 @@ Fan Control daemon for automatic PWM fan control.
 
 Signed-off-by: ImmortalWrt M28C Builder <builder@example.invalid>
 ---
- arch/arm64/boot/dts/rockchip/rk3528-mangopi-m28c.dts | 10 +++++-----
+ target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/rk3528-mangopi-m28c.dts | 10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 
---- a/arch/arm64/boot/dts/rockchip/rk3528-mangopi-m28c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3528-mangopi-m28c.dts
-@@ -24,7 +24,7 @@
+--- a/target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/rk3528-mangopi-m28c.dts
++++ b/target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/rk3528-mangopi-m28c.dts
+@@ -28,5 +28,5 @@
  	fan: pwm-fan {
  		compatible = "pwm-fan";
 -		cooling-levels = <0 100 150 200 255>;
 +		cooling-levels = <0 90 130 180 255>;
  		#cooling-cells = <2>;
  		pwms = <&pwm3 0 1000000 0>;
- 	};
-@@ -41,22 +41,22 @@
- 	trips {
+@@ -49,5 +49,5 @@
  		cpu_passive: trip-cpu-passive {
  			temperature = <45000>;
 -			hysteresis = <2000>;
 +			hysteresis = <5000>;
  			type = "active";
  		};
+@@ -55,5 +55,5 @@
  		cpu_active: trip-cpu-active {
  			temperature = <55000>;
 -			hysteresis = <2000>;
 +			hysteresis = <5000>;
  			type = "active";
  		};
+@@ -61,5 +61,5 @@
  		cpu_warm: trip-cpu-warm {
  			temperature = <65000>;
 -			hysteresis = <2000>;
 +			hysteresis = <5000>;
  			type = "active";
  		};
+@@ -67,5 +67,5 @@
  		cpu_hot: trip-cpu-hot {
  			temperature = <75000>;
 -			hysteresis = <2000>;
 +			hysteresis = <5000>;
  			type = "active";
  		};
- 	};
