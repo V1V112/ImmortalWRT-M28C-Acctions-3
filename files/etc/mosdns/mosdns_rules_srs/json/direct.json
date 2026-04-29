@@ -9,7 +9,7 @@
     "auto_update": true,
     "update_interval_hours": 24,
     "rule_count": 1114,
-    "last_updated": "2026-02-04T00:00:00Z"
+    "last_updated": "2026-04-23T14:07:05.531005275Z"
   },
   {
     "name": "geosite:cn",
@@ -21,6 +21,6 @@
     "auto_update": true,
     "update_interval_hours": 24,
     "rule_count": 118921,
-    "last_updated": "2026-02-04T00:00:00Z"
+    "last_updated": "2026-04-23T14:07:20.962312765Z"
   }
 ]

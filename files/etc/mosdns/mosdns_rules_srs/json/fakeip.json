@@ -9,7 +9,7 @@
     "auto_update": true,
     "update_interval_hours": 24,
     "rule_count": 140,
-    "last_updated": "2026-02-04T00:00:00Z"
+    "last_updated": "2026-04-23T14:07:05.723303916Z"
   },
   {
     "name": "geosite:gfw",
@@ -21,7 +21,7 @@
     "auto_update": true,
     "update_interval_hours": 24,
     "rule_count": 4184,
-    "last_updated": "2026-02-04T00:00:00Z"
+    "last_updated": "2026-04-25T03:46:52.992083625Z"
   },
   {
     "name": "geosite:github",
@@ -33,7 +33,7 @@
     "auto_update": true,
     "update_interval_hours": 24,
     "rule_count": 34,
-    "last_updated": "2026-02-04T00:00:00Z"
+    "last_updated": "2026-04-25T03:46:51.567274904Z"
   },
   {
     "name": "geosite:onedrive",
@@ -45,7 +45,7 @@
     "auto_update": true,
     "update_interval_hours": 24,
     "rule_count": 19,
-    "last_updated": "2026-02-04T00:00:00Z"
+    "last_updated": "2026-04-25T03:46:51.13511932Z"
   },
   {
     "name": "geosite:pikpak",
@@ -57,7 +57,7 @@
     "auto_update": true,
     "update_interval_hours": 24,
     "rule_count": 7,
-    "last_updated": "2026-02-04T00:00:00Z"
+    "last_updated": "2026-04-25T03:46:51.975722524Z"
   },
   {
     "name": "geosite:pinterest",
@@ -69,6 +69,6 @@
     "auto_update": true,
     "update_interval_hours": 24,
     "rule_count": 52,
-    "last_updated": "2026-02-04T00:00:00Z"
+    "last_updated": "2026-04-25T03:46:52.455877001Z"
   }
 ]

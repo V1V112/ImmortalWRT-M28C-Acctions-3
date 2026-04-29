@@ -9,7 +9,7 @@
     "auto_update": true,
     "update_interval_hours": 24,
     "rule_count": 26124,
-    "last_updated": "2026-02-04T00:00:00Z"
+    "last_updated": "2026-04-23T14:07:07.903377859Z"
   },
   {
     "name": "geolocation-cn@!cn",
@@ -21,6 +21,6 @@
     "auto_update": true,
     "update_interval_hours": 24,
     "rule_count": 235,
-    "last_updated": "2026-02-04T00:00:00Z"
+    "last_updated": "2026-04-23T14:07:07.83736895Z"
   }
 ]
